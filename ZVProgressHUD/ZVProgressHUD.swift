@@ -45,7 +45,7 @@ open class ZVProgressHUD: UIControl {
         case custom(color: UIColor)
     }
     
-    internal static let shared = ZVProgressHUD(frame: .zero)
+    static let shared = ZVProgressHUD(frame: .zero)
     
     internal var displayStyle: DisplayStyle = .light
     internal var maskType: MaskType = .none
