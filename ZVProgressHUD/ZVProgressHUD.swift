@@ -97,9 +97,14 @@ open class ZVProgressHUD: UIControl {
         return indicatorView
     }()
     
-    private lazy var titleLabel: UILabel = { [unowned self] in
+    var titleLabel = UILabel(frame: .zero)
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
-        let titleLabel = UILabel(frame: .zero)
+        alpha = 0
+        backgroundColor = .clear
+        
         titleLabel.minimumScaleFactor = 0.5
         titleLabel.textAlignment = .center
         titleLabel.isUserInteractionEnabled = false
@@ -108,14 +113,6 @@ open class ZVProgressHUD: UIControl {
         titleLabel.lineBreakMode = .byTruncatingTail
         titleLabel.numberOfLines = 0
         titleLabel.alpha = 0
-        return titleLabel
-    }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        alpha = 0
-        backgroundColor = .clear
         
         addTarget(self, action: #selector(overlayRecievedTouchUpInsideEvent(_:)), for: .touchUpInside)
     }
